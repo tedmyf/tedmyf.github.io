@@ -4,7 +4,7 @@ Two static files plus assets. No build step. No framework. Hosted free on GitHub
 
 ## Files
 
-```
+```1
 site/
 ├── index.html          # markup
 ├── style.css           # styling

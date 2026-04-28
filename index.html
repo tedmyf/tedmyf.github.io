@@ -27,6 +27,19 @@
 </head>
 <body>
 
+<nav class="sticky-nav" id="sticky-nav" aria-label="Site navigation" aria-hidden="true">
+  <div class="sticky-nav-inner">
+    <span class="sticky-name">Ted Ma</span>
+    <div class="sticky-links">
+      <a href="#bio-h">Bio</a>
+      <a href="#exp-h">Experience</a>
+      <a href="#edu-h">Education</a>
+      <a href="#now-h">Currently</a>
+      <a href="#tools-h">Tooling</a>
+    </div>
+  </div>
+</nav>
+
 <main class="page">
 
   <header class="hero">
@@ -190,6 +203,41 @@
 
 <script>
   document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // Sticky nav — show after hero scrolls out of view
+  const stickyNav = document.getElementById('sticky-nav');
+  const hero = document.querySelector('.hero');
+  new IntersectionObserver(
+    ([entry]) => {
+      const past = !entry.isIntersecting;
+      stickyNav.classList.toggle('is-visible', past);
+      stickyNav.setAttribute('aria-hidden', String(!past));
+    },
+    { threshold: 0, rootMargin: '-80px 0px 0px 0px' }
+  ).observe(hero);
+
+  // Scroll-triggered section reveals
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const blocks = document.querySelectorAll('.block');
+  if (reduceMotion) {
+    blocks.forEach(el => el.classList.add('is-visible'));
+  } else {
+    const blockObs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            blockObs.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.06 }
+    );
+    blocks.forEach((el, i) => {
+      el.style.transitionDelay = `${i * 45}ms`;
+      blockObs.observe(el);
+    });
+  }
 </script>
 
 </body>
