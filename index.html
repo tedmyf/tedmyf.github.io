@@ -27,6 +27,8 @@
 </head>
 <body>
 
+<div id="scroll-progress" aria-hidden="true"></div>
+
 <nav class="sticky-nav" id="sticky-nav" aria-label="Site navigation" aria-hidden="true">
   <div class="sticky-nav-inner">
     <span class="sticky-name">Ted Ma</span>
@@ -204,6 +206,8 @@
 <script>
   document.getElementById('yr').textContent = new Date().getFullYear();
 
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   // Sticky nav — show after hero scrolls out of view
   const stickyNav = document.getElementById('sticky-nav');
   const hero = document.querySelector('.hero');
@@ -227,6 +231,10 @@
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('is-visible');
+            // Clear stagger delay after reveal so hover lift has no lag
+            entry.target.addEventListener('transitionend', () => {
+              entry.target.style.transitionDelay = '';
+            }, { once: true });
             blockObs.unobserve(entry.target);
           }
         });
@@ -238,7 +246,103 @@
       blockObs.observe(el);
     });
   }
+  
+  // Scroll progress bar
+  const progressBar = document.getElementById('scroll-progress');
+  function updateProgress() {
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0;
+    progressBar.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
+
+  // Back-to-top button
+  const backToTop = document.getElementById('back-to-top');
+  function handleBackToTopVisibility() {
+    if (window.scrollY > 600) {
+      if (backToTop.hidden) {
+        backToTop.hidden = false;
+        backToTop.getBoundingClientRect(); // force reflow so opacity transition fires
+        backToTop.classList.add('is-visible');
+      }
+    } else {
+      if (backToTop.classList.contains('is-visible')) {
+        backToTop.classList.remove('is-visible');
+        backToTop.addEventListener('transitionend', (e) => {
+          if (e.propertyName === 'opacity' && !backToTop.classList.contains('is-visible')) {
+            backToTop.hidden = true;
+          }
+        }, { once: true });
+      }
+    }
+  }
+  window.addEventListener('scroll', handleBackToTopVisibility, { passive: true });
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // Active nav section highlighting
+  const navLinks = document.querySelectorAll('.sticky-links a');
+  const sectionHeadings = document.querySelectorAll('h2[id]');
+  const sectionObs = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const link = document.querySelector(`.sticky-links a[href="#${entry.target.id}"]`);
+        if (!link) return;
+        navLinks.forEach(l => l.classList.remove('is-active'));
+        link.classList.add('is-active');
+      });
+    },
+    { rootMargin: '-10% 0px -80% 0px', threshold: 0 }
+  );
+  sectionHeadings.forEach(h => sectionObs.observe(h));
+
+  // Individual timeline entry stagger reveal
+  const timelineEntries = document.querySelectorAll('.timeline .entry');
+  if (reduceMotion) {
+    timelineEntries.forEach(el => el.classList.add('is-visible'));
+  } else {
+    const entryObs = new IntersectionObserver(
+      (observed) => {
+        observed.forEach(ev => {
+          if (ev.isIntersecting) {
+            ev.target.classList.add('is-visible');
+            entryObs.unobserve(ev.target);
+          }
+        });
+      },
+      { threshold: 0.08 }
+    );
+    timelineEntries.forEach((el, i) => {
+      el.style.transitionDelay = `${i * 60}ms`;
+      entryObs.observe(el);
+    });
+  }
+
+  // Portrait 3D mouse-tracking tilt
+  if (!reduceMotion) {
+    const portrait = document.querySelector('.portrait');
+    portrait.addEventListener('mousemove', (e) => {
+      portrait.classList.add('is-tracking');
+      const rect = portrait.getBoundingClientRect();
+      const dx = (e.clientX - (rect.left + rect.width / 2)) / (rect.width / 2);
+      const dy = (e.clientY - (rect.top + rect.height / 2)) / (rect.height / 2);
+      const maxDeg = 8;
+      portrait.style.transform =
+        `perspective(600px) rotateX(${(-dy * maxDeg).toFixed(2)}deg) rotateY(${(dx * maxDeg).toFixed(2)}deg) scale(1.03)`;
+    });
+    portrait.addEventListener('mouseleave', () => {
+      portrait.classList.remove('is-tracking');
+      portrait.style.transform = '';
+    });
+  }
 </script>
+
+<button id="back-to-top" aria-label="Back to top" title="Back to top" hidden>
+  <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 4l-8 8h5v8h6v-8h5z"/></svg>
+</button>
 
 </body>
 </html>
