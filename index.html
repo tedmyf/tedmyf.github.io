@@ -7,7 +7,7 @@
 
   <meta name="description" content="Ted (Yufei) Ma. Investment Decision Analyst at Morningstar. Quantitative finance, Bayesian portfolio construction, and applied software engineering.">
   <meta name="author" content="Ted Yufei Ma">
-  <meta name="theme-color" content="#f7f4ec">
+  <meta name="theme-color" content="#f5f2ea">
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="Ted (Yufei) Ma">
@@ -24,6 +24,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..700,0..100&family=Source+Serif+4:opsz,wght,ital@8..60,300..600,0..1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
+
+  <script>
+    /* Progressive enhancement: mark <html> with .js as early as possible
+       so CSS can apply hidden initial states only when JS is running. */
+    document.documentElement.classList.add('js');
+  </script>
 </head>
 <body>
 
@@ -33,11 +39,12 @@
   <div class="sticky-nav-inner">
     <span class="sticky-name">Ted Ma</span>
     <div class="sticky-links">
-      <a href="#bio-h">Bio</a>
+      <a href="#bio-h">About</a>
       <a href="#exp-h">Experience</a>
+      <a href="#projects-h">Work</a>
       <a href="#edu-h">Education</a>
-      <a href="#now-h">Currently</a>
       <a href="#tools-h">Tooling</a>
+      <a href="#now-h">Currently</a>
     </div>
   </div>
 </nav>
@@ -50,6 +57,7 @@
     </figure>
 
     <div class="lede">
+      <p class="eyebrow">Hello, I&rsquo;m</p>
       <h1>Ted <span class="given">(Yufei)</span> Ma</h1>
       <p class="tagline">Investment Decision Analyst at <em>Morningstar</em>. I work at the intersection of quantitative finance, portfolio construction, and applied software engineering.</p>
       <p class="locale">Chicago, Illinois</p>
@@ -68,7 +76,7 @@
         <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 5h18a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm0 2v.4l9 5.85 9-5.85V7H3Zm18 2.4-8.43 5.48a1 1 0 0 1-1.14 0L3 9.4V17h18V9.4Z"/></svg>
         <span>Email</span>
       </a>
-      <a class="link-icon" href="assets/Ted-Ma-Resume.docx" aria-label="Download résumé">
+      <a class="link-icon resume-link" href="assets/Ted-Ma-Resume.docx" aria-label="Download résumé">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M5 4h9l5 5v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm8 1.5V10h4.5L13 5.5ZM12 12v5l-2-2-1 1 4 4 4-4-1-1-2 2v-5h-2Z"/></svg>
         <span>Résumé</span>
       </a>
@@ -78,7 +86,7 @@
   <hr class="rule">
 
   <section class="block" aria-labelledby="bio-h">
-    <h2 id="bio-h" class="kicker">Bio</h2>
+    <h2 id="bio-h" class="kicker">About</h2>
     <p class="prose">I am a quantitative analyst and software engineer working on the production systems behind portfolio construction. At Morningstar I build Bayesian asset-allocation tooling and the engineering layer that makes it usable, spanning Python research, TypeScript and Vue frontends, and AWS infrastructure. My interests sit at the boundary of statistical modeling, optimization, and the systems needed to put both into the hands of portfolio managers.</p>
   </section>
 
@@ -155,6 +163,114 @@
     </ol>
   </section>
 
+  <section class="block" aria-labelledby="projects-h">
+    <h2 id="projects-h" class="kicker">Selected Work</h2>
+    <p class="section-intro">A handful of projects that reflect the work I care about. Replace these placeholders with real links and screenshots when ready.</p>
+
+    <div class="cards">
+
+      <article class="card">
+        <div class="card-thumb" aria-hidden="true">
+          <svg viewBox="0 0 100 60" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="g1" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0" stop-color="currentColor" stop-opacity="0.4"/>
+                <stop offset="1" stop-color="currentColor" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <path d="M0,42 L8,38 L16,40 L24,28 L32,32 L40,22 L48,26 L56,18 L64,20 L72,12 L80,15 L88,8 L96,10 L100,7 L100,60 L0,60 Z" fill="url(#g1)"/>
+            <path d="M0,42 L8,38 L16,40 L24,28 L32,32 L40,22 L48,26 L56,18 L64,20 L72,12 L80,15 L88,8 L96,10 L100,7" fill="none" stroke="currentColor" stroke-width="0.6"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h3>Bayesian Portfolio Construction</h3>
+          <p>Production tooling that blends a heuristic optimizer with Bayesian updating via a slider UI, exposing how prior conviction shifts allocations across asset-class and regional views.</p>
+          <div class="card-tags">
+            <span>Python</span><span>Vue 3</span><span>TypeScript</span><span>AWS S3</span>
+          </div>
+          <div class="card-meta">Morningstar &middot; internal</div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-thumb" aria-hidden="true">
+          <svg viewBox="0 0 100 60" preserveAspectRatio="none">
+            <g stroke="currentColor" stroke-width="0.5" fill="none" opacity="0.5">
+              <line x1="0" y1="50" x2="100" y2="50"/>
+              <line x1="0" y1="40" x2="100" y2="40"/>
+              <line x1="0" y1="30" x2="100" y2="30"/>
+              <line x1="0" y1="20" x2="100" y2="20"/>
+            </g>
+            <path d="M0,48 Q15,46 25,44 Q35,42 45,38 Q55,34 65,28 Q75,22 85,18 Q95,14 100,10" stroke="currentColor" stroke-width="0.8" fill="none"/>
+            <path d="M0,52 Q15,40 25,42 Q35,30 45,38 Q55,18 65,32 Q75,8 85,22 Q95,5 100,18" stroke="currentColor" stroke-width="0.6" fill="none" opacity="0.4" stroke-dasharray="1.5,1.5"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h3>Volatility-Timing Target-Date Fund</h3>
+          <p>Backtested 1976&ndash;2024 vol-scaling strategy that capped 2008 drawdowns at 14% versus 38% for the S&amp;P 500, generating 0.82 Sharpe with 0.74 beta. Second place at the Cornell Investment Portfolio Case Competition.</p>
+          <div class="card-tags">
+            <span>Python</span><span>Backtesting</span><span>Risk Modeling</span>
+          </div>
+          <div class="card-meta">2025 &middot; Case competition</div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-thumb" aria-hidden="true">
+          <svg viewBox="0 0 100 60" preserveAspectRatio="none">
+            <g fill="currentColor">
+              <rect x="6" y="42" width="6" height="14" opacity="0.5"/>
+              <rect x="18" y="34" width="6" height="22" opacity="0.6"/>
+              <rect x="30" y="22" width="6" height="34" opacity="0.7"/>
+              <rect x="42" y="28" width="6" height="28" opacity="0.5"/>
+              <rect x="54" y="16" width="6" height="40" opacity="0.8"/>
+              <rect x="66" y="10" width="6" height="46" opacity="0.9"/>
+              <rect x="78" y="6"  width="6" height="50" opacity="1"/>
+              <rect x="90" y="14" width="6" height="42" opacity="0.7"/>
+            </g>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h3>Revenue Forecasting Pipeline</h3>
+          <p>Predictive orders model (R² = 0.89, MAPE = 6.7%) integrating orders, backlog, and macro-geopolitical signals. Cut Power BI cycle time by 96% and informed $5B in S&amp;OP planning at Keysight Technologies.</p>
+          <div class="card-tags">
+            <span>Python</span><span>Power BI</span><span>OneStream</span>
+          </div>
+          <div class="card-meta">Summer 2025 &middot; Keysight</div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-thumb" aria-hidden="true">
+          <svg viewBox="0 0 100 60" preserveAspectRatio="none">
+            <g stroke="currentColor" stroke-width="0.5" fill="none" opacity="0.4">
+              <circle cx="50" cy="30" r="6"/>
+              <circle cx="50" cy="30" r="14"/>
+              <circle cx="50" cy="30" r="22"/>
+            </g>
+            <g fill="currentColor">
+              <circle cx="50" cy="30" r="1.5"/>
+              <circle cx="65" cy="20" r="1"/>
+              <circle cx="35" cy="42" r="1.2"/>
+              <circle cx="72" cy="38" r="0.9"/>
+              <circle cx="28" cy="22" r="1.1"/>
+              <circle cx="60" cy="46" r="0.8"/>
+            </g>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h3>Local Monetary Policy</h3>
+          <p>Empirical research as a teaching and research assistant at Boston College: estimated the effects of local inflation and voter turnout on US central-bank credit policy via OLS and panel fixed-effect models.</p>
+          <div class="card-tags">
+            <span>R</span><span>Python</span><span>Econometrics</span>
+          </div>
+          <div class="card-meta">2023&ndash;2024 &middot; BC Carroll</div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
   <section class="block" aria-labelledby="edu-h">
     <h2 id="edu-h" class="kicker">Education</h2>
     <ul class="edu">
@@ -167,6 +283,58 @@
         <div class="edu-meta">Concentrations in Finance and Business Analytics &middot; Magna Cum Laude &middot; 2020 &ndash; 2024</div>
       </li>
     </ul>
+  </section>
+
+  <section class="block" aria-labelledby="tools-h">
+    <h2 id="tools-h" class="kicker">Tooling</h2>
+
+    <div class="tool-grid">
+
+      <div class="tool-group">
+        <h4>Languages</h4>
+        <ul>
+          <li>Python</li>
+          <li>TypeScript</li>
+          <li>JavaScript</li>
+          <li>R</li>
+          <li>SQL</li>
+        </ul>
+      </div>
+
+      <div class="tool-group">
+        <h4>Frontend &amp; Cloud</h4>
+        <ul>
+          <li>Vue.js 3</li>
+          <li>HTML &amp; CSS</li>
+          <li>AWS S3</li>
+          <li>Cloudflare</li>
+          <li>Git</li>
+        </ul>
+      </div>
+
+      <div class="tool-group">
+        <h4>Quant &amp; Analytics</h4>
+        <ul>
+          <li>NumPy &middot; pandas</li>
+          <li>Bayesian methods</li>
+          <li>Convex optimization</li>
+          <li>Black-Litterman</li>
+          <li>Power BI</li>
+        </ul>
+      </div>
+
+      <div class="tool-group">
+        <h4>Finance Platforms</h4>
+        <ul>
+          <li>Bloomberg</li>
+          <li>FactSet</li>
+          <li>Capital IQ</li>
+          <li>OneStream</li>
+          <li>MicroStrategy</li>
+        </ul>
+      </div>
+
+    </div>
   </section>
 
   <section class="block split" aria-labelledby="now-h">
@@ -190,40 +358,57 @@
     </div>
   </section>
 
-  <section class="block" aria-labelledby="tools-h">
-    <h2 id="tools-h" class="kicker">Tooling</h2>
-    <p class="tools">
-      <span>Python</span><span>TypeScript</span><span>R</span><span>SQL</span><span>JavaScript</span><span>Vue.js</span><span>AWS S3</span><span>Cloudflare</span><span>Git</span><span>Power BI</span><span>OneStream</span><span>MicroStrategy</span><span>Bloomberg</span><span>FactSet</span><span>Capital IQ</span>
-    </p>
-  </section>
-
   <footer class="colophon">
     <p>&copy; <span id="yr"></span> Ted Ma &middot; <a href="mailto:yufei.ma23@gmail.com">yufei.ma23@gmail.com</a></p>
   </footer>
 
 </main>
 
+<button id="back-to-top" aria-label="Back to top" title="Back to top" hidden>
+  <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 4l-8 8h5v8h6v-8h5z"/></svg>
+</button>
+
 <script>
+  // Polyfill NodeList.forEach for older browsers (IE, ancient WebKit).
+  // All modern browsers (Chrome 50+, Safari 10+, Firefox 50+) have this natively.
+  if (window.NodeList && !NodeList.prototype.forEach) {
+    NodeList.prototype.forEach = Array.prototype.forEach;
+  }
+
   document.getElementById('yr').textContent = new Date().getFullYear();
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Sticky nav — show after hero scrolls out of view
+  // Feature-detect IntersectionObserver. If unavailable, show everything immediately.
+  const hasIO = 'IntersectionObserver' in window;
+  if (!hasIO) {
+    document.querySelectorAll('.block, .entry, .card').forEach(el => el.classList.add('is-visible'));
+  }
+
+  // Safety net: regardless of observer behavior, force-show all reveal elements
+  // after 1500ms so nothing can stay invisible (handles edge cases like
+  // headless renderers, rare browser bugs, or observers that miss the fold).
+  setTimeout(() => {
+    document.querySelectorAll('.block, .entry, .card').forEach(el => el.classList.add('is-visible'));
+  }, 1500);
+
+  // Sticky nav visibility
   const stickyNav = document.getElementById('sticky-nav');
   const hero = document.querySelector('.hero');
-  new IntersectionObserver(
-    ([entry]) => {
-      const past = !entry.isIntersecting;
-      stickyNav.classList.toggle('is-visible', past);
-      stickyNav.setAttribute('aria-hidden', String(!past));
-    },
-    { threshold: 0, rootMargin: '-80px 0px 0px 0px' }
-  ).observe(hero);
+  if (hasIO) {
+    new IntersectionObserver(
+      ([entry]) => {
+        const past = !entry.isIntersecting;
+        stickyNav.classList.toggle('is-visible', past);
+        stickyNav.setAttribute('aria-hidden', String(!past));
+      },
+      { threshold: 0, rootMargin: '-80px 0px 0px 0px' }
+    ).observe(hero);
+  }
 
   // Scroll-triggered section reveals
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const blocks = document.querySelectorAll('.block');
-  if (reduceMotion) {
+  if (reduceMotion || !hasIO) {
     blocks.forEach(el => el.classList.add('is-visible'));
   } else {
     const blockObs = new IntersectionObserver(
@@ -231,7 +416,6 @@
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('is-visible');
-            // Clear stagger delay after reveal so hover lift has no lag
             entry.target.addEventListener('transitionend', () => {
               entry.target.style.transitionDelay = '';
             }, { once: true });
@@ -242,11 +426,11 @@
       { threshold: 0.06 }
     );
     blocks.forEach((el, i) => {
-      el.style.transitionDelay = `${i * 45}ms`;
+      el.style.transitionDelay = (i * 45) + 'ms';
       blockObs.observe(el);
     });
   }
-  
+
   // Scroll progress bar
   const progressBar = document.getElementById('scroll-progress');
   function updateProgress() {
@@ -263,7 +447,7 @@
     if (window.scrollY > 600) {
       if (backToTop.hidden) {
         backToTop.hidden = false;
-        backToTop.getBoundingClientRect(); // force reflow so opacity transition fires
+        backToTop.getBoundingClientRect();
         backToTop.classList.add('is-visible');
       }
     } else {
@@ -285,23 +469,25 @@
   // Active nav section highlighting
   const navLinks = document.querySelectorAll('.sticky-links a');
   const sectionHeadings = document.querySelectorAll('h2[id]');
-  const sectionObs = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        const link = document.querySelector(`.sticky-links a[href="#${entry.target.id}"]`);
-        if (!link) return;
-        navLinks.forEach(l => l.classList.remove('is-active'));
-        link.classList.add('is-active');
-      });
-    },
-    { rootMargin: '-10% 0px -80% 0px', threshold: 0 }
-  );
-  sectionHeadings.forEach(h => sectionObs.observe(h));
+  if (hasIO) {
+    const sectionObs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          const link = document.querySelector('.sticky-links a[href="#' + entry.target.id + '"]');
+          if (!link) return;
+          navLinks.forEach(l => l.classList.remove('is-active'));
+          link.classList.add('is-active');
+        });
+      },
+      { rootMargin: '-10% 0px -80% 0px', threshold: 0 }
+    );
+    sectionHeadings.forEach(h => sectionObs.observe(h));
+  }
 
-  // Individual timeline entry stagger reveal
+  // Timeline entry stagger
   const timelineEntries = document.querySelectorAll('.timeline .entry');
-  if (reduceMotion) {
+  if (reduceMotion || !hasIO) {
     timelineEntries.forEach(el => el.classList.add('is-visible'));
   } else {
     const entryObs = new IntersectionObserver(
@@ -316,8 +502,30 @@
       { threshold: 0.08 }
     );
     timelineEntries.forEach((el, i) => {
-      el.style.transitionDelay = `${i * 60}ms`;
+      el.style.transitionDelay = (i * 60) + 'ms';
       entryObs.observe(el);
+    });
+  }
+
+  // Project cards stagger
+  const projectCards = document.querySelectorAll('.cards .card');
+  if (reduceMotion || !hasIO) {
+    projectCards.forEach(el => el.classList.add('is-visible'));
+  } else {
+    const cardObs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            cardObs.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    projectCards.forEach((el, i) => {
+      el.style.transitionDelay = (i * 80) + 'ms';
+      cardObs.observe(el);
     });
   }
 
@@ -331,7 +539,7 @@
       const dy = (e.clientY - (rect.top + rect.height / 2)) / (rect.height / 2);
       const maxDeg = 8;
       portrait.style.transform =
-        `perspective(600px) rotateX(${(-dy * maxDeg).toFixed(2)}deg) rotateY(${(dx * maxDeg).toFixed(2)}deg) scale(1.03)`;
+        'perspective(600px) rotateX(' + (-dy * maxDeg).toFixed(2) + 'deg) rotateY(' + (dx * maxDeg).toFixed(2) + 'deg) scale(1.03)';
     });
     portrait.addEventListener('mouseleave', () => {
       portrait.classList.remove('is-tracking');
@@ -339,10 +547,6 @@
     });
   }
 </script>
-
-<button id="back-to-top" aria-label="Back to top" title="Back to top" hidden>
-  <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 4l-8 8h5v8h6v-8h5z"/></svg>
-</button>
 
 </body>
 </html>
