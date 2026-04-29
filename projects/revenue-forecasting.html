@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Revenue Forecasting · Ted Ma</title>
+  <meta name="description" content="A predictive orders model used in $5B sales and operations planning at Keysight Technologies, replacing a manual spreadsheet workflow with an explainable regression pipeline.">
+  <meta name="theme-color" content="#f3f4f6" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0a0e16" media="(prefers-color-scheme: dark)">
+
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<div id="scroll-progress" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="../index.html" class="logo" aria-label="Home">
+      <span class="mark">tm</span>
+      <span>Ted Ma</span>
+    </a>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a class="crumb-home" href="../index.html">Home</a>
+      <span class="sep">/</span>
+      <a href="../index.html#projects-h">Selected Work</a>
+      <span class="sep">/</span>
+      <span class="current">Revenue Forecasting</span>
+    </nav>
+  </div>
+</header>
+
+<main class="project-page">
+  <article>
+
+    <header class="project-hero">
+      <div class="project-meta">
+        <span class="project-status completed">Completed</span>
+        <span class="project-org">Keysight Technologies</span>
+        <span class="project-year">Summer 2025</span>
+      </div>
+      <h1>Revenue Forecasting</h1>
+      <p class="project-lede">A predictive orders model embedded in the corporate sales and operations planning cycle, built to replace a manual spreadsheet workflow that gated $5B in annual revenue planning.</p>
+    </header>
+
+    <div class="project-grid">
+
+      <div class="project-body">
+
+        <section>
+          <h2>Context</h2>
+          <p>Sales and operations planning at the corporate level reconciles bookings, capacity, and revenue commitments across divisions. The existing forecast process relied on hand-curated spreadsheets, with cycle times measured in weeks and assumption changes propagated by email. Forecast quality varied with the analyst running the cycle.</p>
+          <p>The remit: produce a single, auditable predictive orders model that finance, supply chain, and division leadership could agree on, without sacrificing the explanatory clarity that the spreadsheet offered.</p>
+        </section>
+
+        <section>
+          <h2>Approach</h2>
+          <p>The model regresses incoming orders on a feature set drawn from upstream demand signals, macroeconomic indicators, and seasonal book-to-bill patterns. Variable selection used cross-validated penalized regression to control collinearity across overlapping market signals.</p>
+          <p>Explainability was a hard requirement. Each forecast point ships with a coefficient-weighted feature contribution table, so a planner can see why the model raised or lowered the next quarter and challenge the assumption in real time.</p>
+
+          <div class="stat-row">
+            <div class="stat">
+              <div class="stat-label">Out-of-Sample R&sup2;</div>
+              <div class="stat-value positive">0.89</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label">MAPE</div>
+              <div class="stat-value positive">6.7%</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label">Cycle Time Reduction</div>
+              <div class="stat-value positive">96%</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label">Planning Scope</div>
+              <div class="stat-value">$5B</div>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2>Implementation</h2>
+          <p>The Python pipeline pulls data from OneStream and MicroStrategy, runs the regression, and writes results to a Power BI semantic model that finance leadership already trusted. No new dashboards. The model lives behind an interface the planners had been using for years; only the inputs changed.</p>
+          <p>This was a deliberate scope decision. A model that asks finance to switch tools at the same time it asks them to switch methodologies will fail on adoption alone, regardless of accuracy.</p>
+        </section>
+
+        <section>
+          <h2>Outcomes</h2>
+          <p>The forecasting cycle compressed from a multi-week effort to under a day end-to-end. Out-of-sample accuracy beat the prior process by a meaningful margin on the validation horizon. The model now runs as a recurring step in the corporate planning calendar.</p>
+        </section>
+
+        <section>
+          <h2>What I Learned</h2>
+          <p>The hardest part of internal forecasting work is not the model. It is the negotiation over which features and assumptions count as legitimate, and the migration of a process that several teams already had reasons to defend. Shipping into the existing tooling, rather than alongside it, was the move that made adoption possible.</p>
+        </section>
+
+      </div>
+
+      <aside class="project-sidebar">
+        <section>
+          <h3>Specifications</h3>
+          <ul class="spec-list">
+            <li><span class="key">Status</span><span class="val">Completed</span></li>
+            <li><span class="key">Role</span><span class="val">Data Science Intern</span></li>
+            <li><span class="key">Domain</span><span class="val">Corporate FP&amp;A</span></li>
+            <li><span class="key">Year</span><span class="val">2025</span></li>
+          </ul>
+        </section>
+        <section>
+          <h3>Stack</h3>
+          <ul class="tag-list">
+            <li>Python</li>
+            <li>Power BI</li>
+            <li>OneStream</li>
+            <li>MicroStrategy</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Methods</h3>
+          <ul class="tag-list">
+            <li>Penalized Regression</li>
+            <li>Time Series</li>
+            <li>Cross-Validation</li>
+          </ul>
+        </section>
+      </aside>
+
+    </div>
+
+    <nav class="project-nav" aria-label="Project navigation">
+      <a class="prev" href="volatility-timing-tdf.html">
+        <span class="direction">&larr; Previous</span>
+        <span class="title">Volatility-Timing TDF</span>
+      </a>
+      <a class="next" href="local-monetary-policy.html">
+        <span class="direction">Next &rarr;</span>
+        <span class="title">Local Monetary Policy</span>
+      </a>
+    </nav>
+
+  </article>
+</main>
+
+<script>
+  const progressBar = document.getElementById('scroll-progress');
+  function updateProgress() {
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0;
+    progressBar.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
+</script>
+
+</body>
+</html>

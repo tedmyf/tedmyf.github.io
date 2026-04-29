@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bayesian Portfolio Construction · Ted Ma</title>
+  <meta name="description" content="Production tooling at Morningstar combining a heuristic optimizer with Bayesian updating, surfaced through a slider UI for prior conviction across asset class and regional views.">
+  <meta name="theme-color" content="#f3f4f6" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0a0e16" media="(prefers-color-scheme: dark)">
+
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<div id="scroll-progress" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="../index.html" class="logo" aria-label="Home">
+      <span class="mark">tm</span>
+      <span>Ted Ma</span>
+    </a>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a class="crumb-home" href="../index.html">Home</a>
+      <span class="sep">/</span>
+      <a href="../index.html#projects-h">Selected Work</a>
+      <span class="sep">/</span>
+      <span class="current">Bayesian Portfolio Construction</span>
+    </nav>
+  </div>
+</header>
+
+<main class="project-page">
+  <article>
+
+    <header class="project-hero">
+      <div class="project-meta">
+        <span class="project-status">In Production</span>
+        <span class="project-org">Morningstar</span>
+        <span class="project-year">2026</span>
+      </div>
+      <h1>Bayesian Portfolio Construction</h1>
+      <p class="project-lede">A heuristic optimizer paired with Bayesian updating, exposed through a slider UI that shows analysts how shifts in prior conviction redistribute weights across asset class and regional views.</p>
+    </header>
+
+    <div class="project-grid">
+
+      <div class="project-body">
+
+        <section>
+          <h2>Context</h2>
+          <p>Capital market assumptions sit upstream of every multi-asset portfolio. Analysts hold strong priors about asset class returns, volatilities, and correlations. Classic mean-variance optimizers translate those priors into corner solutions and pathological allocations whenever the inputs shift even slightly.</p>
+          <p>The Black&ndash;Litterman framework addresses this by blending an equilibrium prior with subjective views. Standard implementations leave the conviction parameter buried in code, hidden from the analyst making the call. The goal of this project: turn that conviction parameter into a first-class control surface.</p>
+        </section>
+
+        <section>
+          <h2>Approach</h2>
+          <p>Two components run in tandem. A heuristic optimizer produces a baseline allocation under reference assumptions. A Bayesian update layer revises that allocation toward analyst views, with prior strength controlled by a continuous slider in the UI.</p>
+          <p>At one extreme the slider returns the heuristic baseline unchanged. At the other, it lets analyst views fully override. Intermediate positions interpolate the posterior, exposing exactly how much each percentage point of conviction is worth in basis points of allocation.</p>
+
+          <div class="project-viz">
+            <div class="project-viz-header">
+              <span><strong>Posterior Allocation Sweep</strong> &middot; Prior Strength &tau;</span>
+              <span>Illustrative</span>
+            </div>
+            <svg class="project-viz-svg" viewBox="0 0 700 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Posterior allocation curves across prior strength">
+              <g stroke="currentColor" stroke-width="0.5" opacity="0.18">
+                <line x1="60" y1="20" x2="60" y2="240"/>
+                <line x1="60" y1="240" x2="680" y2="240"/>
+                <line x1="60" y1="80"  x2="680" y2="80"  stroke-dasharray="2,3"/>
+                <line x1="60" y1="140" x2="680" y2="140" stroke-dasharray="2,3"/>
+                <line x1="60" y1="200" x2="680" y2="200" stroke-dasharray="2,3"/>
+              </g>
+              <g font-family="JetBrains Mono, monospace" font-size="9" fill="currentColor" opacity="0.55">
+                <text x="55" y="83"  text-anchor="end">60%</text>
+                <text x="55" y="143" text-anchor="end">40%</text>
+                <text x="55" y="203" text-anchor="end">20%</text>
+                <text x="55" y="243" text-anchor="end">0%</text>
+                <text x="60"  y="258" text-anchor="middle">&tau;=0</text>
+                <text x="370" y="258" text-anchor="middle">&tau;=0.5</text>
+                <text x="680" y="258" text-anchor="middle">&tau;=1</text>
+              </g>
+              <path d="M60,80 Q200,100 370,140 Q540,180 680,200" fill="none" stroke="#3b82f6" stroke-width="2"/>
+              <path d="M60,180 Q200,170 370,150 Q540,130 680,110" fill="none" stroke="#15803d" stroke-width="2"/>
+              <path d="M60,220 Q200,215 370,210 Q540,200 680,190" fill="none" stroke="#b45309" stroke-width="2"/>
+              <g font-family="Inter, sans-serif" font-size="11" fill="currentColor">
+                <rect x="80"  y="35" width="10" height="2" fill="#3b82f6"/>
+                <text x="96"  y="40">Equity</text>
+                <rect x="170" y="35" width="10" height="2" fill="#15803d"/>
+                <text x="186" y="40">Fixed Income</text>
+                <rect x="290" y="35" width="10" height="2" fill="#b45309"/>
+                <text x="306" y="40">Alternatives</text>
+              </g>
+            </svg>
+          </div>
+
+          <h3>Architecture</h3>
+          <p>The Python service computes both the heuristic baseline and the Bayesian posterior, exposing them as a single JSON payload. A Vue 3 frontend pulls those payloads on slider change, debounced to limit recomputation. Cached posterior outputs live in S3, keyed by view set and prior. The TypeScript types are shared between server and client to keep the schema honest.</p>
+        </section>
+
+        <section>
+          <h2>Outcomes</h2>
+          <p>Internal use across the asset allocation team. The interactive prior-strength surface reduces the cognitive cost of running scenario analyses and makes the role of the prior parameter visible rather than implicit.</p>
+        </section>
+
+        <section>
+          <h2>What I Learned</h2>
+          <p>Bayesian methods earn their keep when the conviction parameter is exposed, not hidden. Most production optimizers fail not because the math is wrong but because the inputs are buried three abstractions deep and analysts cannot interrogate them in real time. UI design is part of the model.</p>
+        </section>
+
+      </div>
+
+      <aside class="project-sidebar">
+        <section>
+          <h3>Specifications</h3>
+          <ul class="spec-list">
+            <li><span class="key">Status</span><span class="val">Production</span></li>
+            <li><span class="key">Role</span><span class="val">IC Engineer</span></li>
+            <li><span class="key">Domain</span><span class="val">Multi-Asset</span></li>
+            <li><span class="key">Year</span><span class="val">2026</span></li>
+          </ul>
+        </section>
+        <section>
+          <h3>Stack</h3>
+          <ul class="tag-list">
+            <li>Python</li>
+            <li>NumPy</li>
+            <li>Vue 3</li>
+            <li>TypeScript</li>
+            <li>AWS S3</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Methods</h3>
+          <ul class="tag-list">
+            <li>Black&ndash;Litterman</li>
+            <li>Bayesian Updating</li>
+            <li>Convex Optimization</li>
+          </ul>
+        </section>
+      </aside>
+
+    </div>
+
+    <nav class="project-nav" aria-label="Project navigation">
+      <a class="prev" href="local-monetary-policy.html">
+        <span class="direction">&larr; Previous</span>
+        <span class="title">Local Monetary Policy</span>
+      </a>
+      <a class="next" href="volatility-timing-tdf.html">
+        <span class="direction">Next &rarr;</span>
+        <span class="title">Volatility-Timing TDF</span>
+      </a>
+    </nav>
+
+  </article>
+</main>
+
+<script>
+  const progressBar = document.getElementById('scroll-progress');
+  function updateProgress() {
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0;
+    progressBar.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
+</script>
+
+</body>
+</html>

@@ -7,7 +7,8 @@
 
   <meta name="description" content="Ted (Yufei) Ma. Investment Decision Analyst at Morningstar. Quantitative finance, Bayesian portfolio construction, and applied software engineering.">
   <meta name="author" content="Ted Yufei Ma">
-  <meta name="theme-color" content="#f5f2ea">
+  <meta name="theme-color" content="#f3f4f6" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0a0e16" media="(prefers-color-scheme: dark)">
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="Ted (Yufei) Ma">
@@ -21,13 +22,11 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..700,0..100&family=Source+Serif+4:opsz,wght,ital@8..60,300..600,0..1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 
   <script>
-    /* Progressive enhancement: mark <html> with .js as early as possible
-       so CSS can apply hidden initial states only when JS is running. */
     document.documentElement.classList.add('js');
   </script>
 </head>
@@ -44,9 +43,9 @@
         <img src="assets/portrait.jpeg" alt="Ted Ma" width="640" height="640">
       </figure>
 
-      <p class="eyebrow">Hello, I&rsquo;m</p>
+      <p class="eyebrow">Investment Decision Analyst</p>
       <h1>Ted <span class="given">(Yufei)</span> Ma</h1>
-      <p class="tagline">Investment Decision Analyst at <em>Morningstar</em>. I work at the intersection of quantitative finance, portfolio construction, and applied software engineering.</p>
+      <p class="tagline">Investment Decision Analyst at <em>Morningstar</em>. Quantitative finance, portfolio construction, and applied software engineering.</p>
       <p class="locale">Chicago, Illinois</p>
 
       <nav class="sidebar-nav" aria-label="Section navigation">
@@ -64,7 +63,7 @@
       <a class="link-icon" href="https://www.linkedin.com/in/tedmyf" aria-label="LinkedIn" rel="me">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0Z"/></svg>
       </a>
-      <a class="link-icon" href="https://github.com/" aria-label="GitHub" rel="me">
+      <a class="link-icon" href="https://github.com/tedmyf" aria-label="GitHub" rel="me">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.78 0c2.21-1.49 3.18-1.18 3.18-1.18.62 1.58.23 2.75.11 3.04.74.81 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.13 0 1.54-.01 2.78-.01 3.16 0 .31.21.67.8.56C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z"/></svg>
       </a>
       <a class="link-icon" href="mailto:yufei.ma23@gmail.com" aria-label="Email">
@@ -142,7 +141,7 @@
 
       <div class="cards">
 
-        <article class="card">
+        <a class="card" href="projects/bayesian-portfolio.html">
           <div class="card-thumb" aria-hidden="true">
             <svg viewBox="0 0 100 60" preserveAspectRatio="none">
               <defs>
@@ -157,15 +156,15 @@
           </div>
           <div class="card-body">
             <h3>Bayesian Portfolio Construction</h3>
-            <p>Production tooling that blends a heuristic optimizer with Bayesian updating via a slider UI, exposing how prior conviction shifts allocations across asset-class and regional views.</p>
+            <p>Heuristic optimizer paired with Bayesian updating, exposed via slider UI for prior conviction across asset class and regional views.</p>
             <div class="card-tags">
               <span>Python</span><span>Vue 3</span><span>TypeScript</span><span>AWS S3</span>
             </div>
-            <div class="card-meta">Morningstar &middot; internal</div>
+            <div class="card-meta"><span>Morningstar &middot; Production</span></div>
           </div>
-        </article>
+        </a>
 
-        <article class="card">
+        <a class="card" href="projects/volatility-timing-tdf.html">
           <div class="card-thumb" aria-hidden="true">
             <svg viewBox="0 0 100 60" preserveAspectRatio="none">
               <g stroke="currentColor" stroke-width="0.5" fill="none" opacity="0.5">
@@ -179,16 +178,16 @@
             </svg>
           </div>
           <div class="card-body">
-            <h3>Volatility-Timing Target-Date Fund</h3>
-            <p>Backtested 1976&ndash;2024 vol-scaling strategy that capped 2008 drawdowns at 14% versus 38% for the S&amp;P 500, generating 0.82 Sharpe with 0.74 beta. Second place at the Cornell Investment Portfolio Case Competition.</p>
+            <h3>Volatility-Timing TDF</h3>
+            <p>Backtested 1976&ndash;2024 vol-scaling strategy. Capped 2008 drawdown at 14% versus 38% for the S&amp;P 500. Sharpe 0.82, beta 0.74.</p>
             <div class="card-tags">
               <span>Python</span><span>Backtesting</span><span>Risk Modeling</span>
             </div>
-            <div class="card-meta">2025 &middot; Case competition</div>
+            <div class="card-meta"><span>2025 &middot; Cornell IPCC, 2nd</span></div>
           </div>
-        </article>
+        </a>
 
-        <article class="card">
+        <a class="card" href="projects/revenue-forecasting.html">
           <div class="card-thumb" aria-hidden="true">
             <svg viewBox="0 0 100 60" preserveAspectRatio="none">
               <g fill="currentColor">
@@ -205,15 +204,15 @@
           </div>
           <div class="card-body">
             <h3>Revenue Forecasting Pipeline</h3>
-            <p>Predictive orders model (R² = 0.89, MAPE = 6.7%) integrating orders, backlog, and macro-geopolitical signals. Cut Power BI cycle time by 96% and informed $5B in S&amp;OP planning at Keysight Technologies.</p>
+            <p>Predictive orders model (R&sup2; = 0.89, MAPE = 6.7%). Cut Power BI cycle time by 96% and informed $5B in S&amp;OP planning.</p>
             <div class="card-tags">
               <span>Python</span><span>Power BI</span><span>OneStream</span>
             </div>
-            <div class="card-meta">Summer 2025 &middot; Keysight</div>
+            <div class="card-meta"><span>Summer 2025 &middot; Keysight</span></div>
           </div>
-        </article>
+        </a>
 
-        <article class="card">
+        <a class="card" href="projects/local-monetary-policy.html">
           <div class="card-thumb" aria-hidden="true">
             <svg viewBox="0 0 100 60" preserveAspectRatio="none">
               <g stroke="currentColor" stroke-width="0.5" fill="none" opacity="0.4">
@@ -233,13 +232,13 @@
           </div>
           <div class="card-body">
             <h3>Local Monetary Policy</h3>
-            <p>Empirical research as a teaching and research assistant at Boston College: estimated the effects of local inflation and voter turnout on US central-bank credit policy via OLS and panel fixed-effect models.</p>
+            <p>Empirical research at BC Carroll. Estimated effects of local inflation and voter turnout on US central-bank credit policy via OLS and panel fixed effects.</p>
             <div class="card-tags">
               <span>R</span><span>Python</span><span>Econometrics</span>
             </div>
-            <div class="card-meta">2023&ndash;2024 &middot; BC Carroll</div>
+            <div class="card-meta"><span>2023 &ndash; 2024 &middot; BC Carroll</span></div>
           </div>
-        </article>
+        </a>
 
       </div>
     </section>
@@ -318,7 +317,6 @@
 </button>
 
 <script>
-  // Polyfill NodeList.forEach for older browsers (IE, ancient WebKit).
   if (window.NodeList && !NodeList.prototype.forEach) {
     NodeList.prototype.forEach = Array.prototype.forEach;
   }
@@ -332,12 +330,10 @@
     document.querySelectorAll('.block, .card').forEach(el => el.classList.add('is-visible'));
   }
 
-  // Safety net
   setTimeout(() => {
     document.querySelectorAll('.block, .card').forEach(el => el.classList.add('is-visible'));
   }, 1500);
 
-  // Section reveal on scroll
   const blocks = document.querySelectorAll('.block');
   if (reduceMotion || !hasIO) {
     blocks.forEach(el => el.classList.add('is-visible'));
@@ -359,7 +355,6 @@
     });
   }
 
-  // Project cards stagger
   const projectCards = document.querySelectorAll('.cards .card');
   if (reduceMotion || !hasIO) {
     projectCards.forEach(el => el.classList.add('is-visible'));
@@ -381,7 +376,6 @@
     });
   }
 
-  // Scroll progress bar
   const progressBar = document.getElementById('scroll-progress');
   function updateProgress() {
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
@@ -391,7 +385,6 @@
   window.addEventListener('scroll', updateProgress, { passive: true });
   updateProgress();
 
-  // Back-to-top button
   const backToTop = document.getElementById('back-to-top');
   function handleBackToTopVisibility() {
     if (window.scrollY > 600) {
@@ -416,18 +409,15 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  // Sidebar nav active state
   const navLinks = document.querySelectorAll('.sidebar-nav a');
   const sectionHeadings = document.querySelectorAll('h2[id]');
 
   function getActiveHeading() {
     const viewportH = window.innerHeight;
     const docH = document.documentElement.scrollHeight;
-    // At the very bottom of the page, force the last section active
     if (window.scrollY + viewportH >= docH - 4) {
       return sectionHeadings[sectionHeadings.length - 1];
     }
-    // Last heading whose top edge has crossed 30% down the viewport
     var active = sectionHeadings[0];
     for (var i = 0; i < sectionHeadings.length; i++) {
       if (sectionHeadings[i].getBoundingClientRect().top <= viewportH * 0.3) {
@@ -444,7 +434,6 @@
     link.classList.add('is-active');
   }
 
-  // Immediately highlight the clicked item; scroll event confirms it after animation
   navLinks.forEach(function(link) {
     link.addEventListener('click', function() {
       navLinks.forEach(function(l) { l.classList.remove('is-active'); });
@@ -463,25 +452,21 @@
     });
   }, { passive: true });
 
-  // Set initial state on load
   var initialH = getActiveHeading();
   if (initialH) setActiveLink(initialH.id);
 
-  // Portrait 3D mouse-tracking tilt
   if (!reduceMotion) {
     const portrait = document.querySelector('.portrait');
     if (portrait) {
       portrait.addEventListener('mousemove', (e) => {
-        portrait.classList.add('is-tracking');
         const rect = portrait.getBoundingClientRect();
         const dx = (e.clientX - (rect.left + rect.width / 2)) / (rect.width / 2);
         const dy = (e.clientY - (rect.top + rect.height / 2)) / (rect.height / 2);
-        const maxDeg = 8;
+        const maxDeg = 6;
         portrait.style.transform =
-          'perspective(600px) rotateX(' + (-dy * maxDeg).toFixed(2) + 'deg) rotateY(' + (dx * maxDeg).toFixed(2) + 'deg) scale(1.03)';
+          'perspective(600px) rotateX(' + (-dy * maxDeg).toFixed(2) + 'deg) rotateY(' + (dx * maxDeg).toFixed(2) + 'deg) scale(1.02)';
       });
       portrait.addEventListener('mouseleave', () => {
-        portrait.classList.remove('is-tracking');
         portrait.style.transform = '';
       });
     }

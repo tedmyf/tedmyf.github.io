@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Local Monetary Policy · Ted Ma</title>
+  <meta name="description" content="Empirical research on the heterogeneous effects of Federal Reserve credit policy across local economic conditions, drawing on panel methods and county-level data.">
+  <meta name="theme-color" content="#f3f4f6" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0a0e16" media="(prefers-color-scheme: dark)">
+
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<div id="scroll-progress" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="../index.html" class="logo" aria-label="Home">
+      <span class="mark">tm</span>
+      <span>Ted Ma</span>
+    </a>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a class="crumb-home" href="../index.html">Home</a>
+      <span class="sep">/</span>
+      <a href="../index.html#projects-h">Selected Work</a>
+      <span class="sep">/</span>
+      <span class="current">Local Monetary Policy</span>
+    </nav>
+  </div>
+</header>
+
+<main class="project-page">
+  <article>
+
+    <header class="project-hero">
+      <div class="project-meta">
+        <span class="project-status research">Research</span>
+        <span class="project-org">Boston College, Carroll School</span>
+        <span class="project-year">2023&ndash;2024</span>
+      </div>
+      <h1>Local Monetary Policy</h1>
+      <p class="project-lede">An empirical investigation of whether Federal Reserve credit policy transmits uniformly across local economic conditions, or whether the apparent national effect masks meaningful regional dispersion.</p>
+    </header>
+
+    <div class="project-grid">
+
+      <div class="project-body">
+
+        <section>
+          <h2>Context</h2>
+          <p>The standard narrative treats monetary policy as a national lever. A federal funds rate change is announced, credit conditions adjust, and the real economy responds. Yet the United States is a federation of local labor markets, banking networks, and political environments. The transmission mechanism is unlikely to be spatially flat.</p>
+          <p>The question driving this research: do measurable local conditions, including local inflation realizations and proxies for civic engagement, mediate the response of regional credit aggregates to Fed actions?</p>
+        </section>
+
+        <section>
+          <h2>Approach</h2>
+          <p>The empirical strategy uses panel fixed effects regressions on county-level credit and macroeconomic data, with the federal funds rate change as the policy shock. Local inflation is constructed from regional CPI components; civic engagement is proxied with voter turnout in federal election years.</p>
+          <p>Fixed effects absorb time-invariant local heterogeneity; year effects absorb common shocks. Standard errors cluster at the state level to allow for within-state correlation. The reported coefficients should be read as conditional associations, not causal estimates; the identification assumptions are documented in the paper rather than assumed away.</p>
+
+          <h3>Variables</h3>
+          <ul class="spec-list">
+            <li><span class="key">Dependent</span><span class="val">Local credit aggregates</span></li>
+            <li><span class="key">Shock</span><span class="val">Fed funds rate change</span></li>
+            <li><span class="key">Mediator 1</span><span class="val">Local inflation</span></li>
+            <li><span class="key">Mediator 2</span><span class="val">Voter turnout</span></li>
+            <li><span class="key">Controls</span><span class="val">Income, employment, demographics</span></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Findings</h2>
+          <p>Credit response heterogeneity correlates with local inflation realizations in the expected direction: counties running hotter than the national average exhibit a more compressed credit response to tightening. The civic engagement channel is weaker and less robust to specification choices, which the paper discusses rather than papers over.</p>
+          <p>The headline takeaway is descriptive, not prescriptive. The data are consistent with a transmission mechanism that depends on local conditions; they do not pin down the mechanism itself.</p>
+        </section>
+
+        <section>
+          <h2>What I Learned</h2>
+          <p>Empirical macro research lives or dies on the choices that get hidden in the methods section: cluster level, fixed effects structure, control variable selection. Reporting confidence proportional to the strength of the identification, rather than to the size of the t-statistic, is the discipline that separates honest work from advocacy dressed as evidence.</p>
+        </section>
+
+      </div>
+
+      <aside class="project-sidebar">
+        <section>
+          <h3>Specifications</h3>
+          <ul class="spec-list">
+            <li><span class="key">Status</span><span class="val">Research</span></li>
+            <li><span class="key">Setting</span><span class="val">BC Carroll School</span></li>
+            <li><span class="key">Period</span><span class="val">2023&ndash;2024</span></li>
+            <li><span class="key">Format</span><span class="val">Working Paper</span></li>
+          </ul>
+        </section>
+        <section>
+          <h3>Stack</h3>
+          <ul class="tag-list">
+            <li>R</li>
+            <li>Python</li>
+            <li>Econometrics</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Methods</h3>
+          <ul class="tag-list">
+            <li>OLS</li>
+            <li>Panel Fixed Effects</li>
+            <li>Clustered Standard Errors</li>
+          </ul>
+        </section>
+      </aside>
+
+    </div>
+
+    <nav class="project-nav" aria-label="Project navigation">
+      <a class="prev" href="revenue-forecasting.html">
+        <span class="direction">&larr; Previous</span>
+        <span class="title">Revenue Forecasting</span>
+      </a>
+      <a class="next" href="bayesian-portfolio.html">
+        <span class="direction">Next &rarr;</span>
+        <span class="title">Bayesian Portfolio Construction</span>
+      </a>
+    </nav>
+
+  </article>
+</main>
+
+<script>
+  const progressBar = document.getElementById('scroll-progress');
+  function updateProgress() {
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0;
+    progressBar.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
+</script>
+
+</body>
+</html>

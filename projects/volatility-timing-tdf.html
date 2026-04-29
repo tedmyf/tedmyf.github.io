@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Volatility-Timing Target-Date Fund · Ted Ma</title>
+  <meta name="description" content="A backtested target-date fund strategy using volatility scaling, evaluated across five decades of market data. Second place at the Cornell IPCC.">
+  <meta name="theme-color" content="#f3f4f6" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0a0e16" media="(prefers-color-scheme: dark)">
+
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<div id="scroll-progress" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="../index.html" class="logo" aria-label="Home">
+      <span class="mark">tm</span>
+      <span>Ted Ma</span>
+    </a>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a class="crumb-home" href="../index.html">Home</a>
+      <span class="sep">/</span>
+      <a href="../index.html#projects-h">Selected Work</a>
+      <span class="sep">/</span>
+      <span class="current">Volatility-Timing TDF</span>
+    </nav>
+  </div>
+</header>
+
+<main class="project-page">
+  <article>
+
+    <header class="project-hero">
+      <div class="project-meta">
+        <span class="project-status completed">2nd Place &middot; Case Competition</span>
+        <span class="project-org">Cornell IPCC</span>
+        <span class="project-year">2025</span>
+      </div>
+      <h1>Volatility-Timing Target-Date Fund</h1>
+      <p class="project-lede">A target-date fund strategy that scales equity exposure inversely with realized volatility, backtested from 1976 through 2024 against a conventional glide path benchmark.</p>
+    </header>
+
+    <div class="project-grid">
+
+      <div class="project-body">
+
+        <section>
+          <h2>Context</h2>
+          <p>Target-date funds dominate defined-contribution plans, yet their glide paths are largely deterministic: equity weight declines as a fixed function of years to retirement. The path ignores prevailing market conditions. A 2008 retiree riding a static glide path absorbed the full equity drawdown at the worst possible moment in the lifecycle.</p>
+          <p>The thesis: a small, rules-based deviation from the static glide path, conditioned on realized volatility, can preserve long-run expected return while compressing the left tail.</p>
+        </section>
+
+        <section>
+          <h2>Approach</h2>
+          <p>Equity exposure scales inversely with a 60-day realized volatility estimate, capped between 50% and 130% of the baseline glide path weight. The bond sleeve absorbs the difference, with risk-parity weighting across duration buckets. Rebalancing runs monthly to limit turnover.</p>
+          <p>Two design choices mattered. First, the volatility lookback window is short enough to react to regime changes but long enough to avoid noise-driven flips. Second, the cap on deviation from the baseline glide path keeps the strategy fiduciary-compliant; the fund still tracks its target date.</p>
+
+          <h3>Backtest</h3>
+          <p>Data spans 1976 through 2024, covering Volcker, the dot-com peak and unwind, the global financial crisis, and the 2020-2022 cycle. Returns are net of an estimated 25 bps expense ratio. The benchmark is a representative 2030-vintage TDF glide path.</p>
+
+          <div class="stat-row">
+            <div class="stat">
+              <div class="stat-label">Sharpe Ratio</div>
+              <div class="stat-value positive">0.82</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label">Equity Beta</div>
+              <div class="stat-value">0.74</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label">2008 Drawdown</div>
+              <div class="stat-value positive">14%</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label">S&amp;P 500, 2008</div>
+              <div class="stat-value negative">38%</div>
+            </div>
+          </div>
+
+          <div class="project-viz">
+            <div class="project-viz-header">
+              <span><strong>Drawdown Comparison</strong> &middot; 2007&ndash;2010</span>
+              <span>Backtest</span>
+            </div>
+            <svg class="project-viz-svg" viewBox="0 0 700 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Drawdown curves comparing strategy to S&amp;P 500 across the 2008 crisis">
+              <g stroke="currentColor" stroke-width="0.5" opacity="0.18">
+                <line x1="60" y1="20" x2="60" y2="240"/>
+                <line x1="60" y1="240" x2="680" y2="240"/>
+                <line x1="60" y1="60"  x2="680" y2="60"  stroke-dasharray="2,3"/>
+                <line x1="60" y1="120" x2="680" y2="120" stroke-dasharray="2,3"/>
+                <line x1="60" y1="180" x2="680" y2="180" stroke-dasharray="2,3"/>
+              </g>
+              <g font-family="JetBrains Mono, monospace" font-size="9" fill="currentColor" opacity="0.55">
+                <text x="55" y="63"  text-anchor="end">0%</text>
+                <text x="55" y="123" text-anchor="end">-15%</text>
+                <text x="55" y="183" text-anchor="end">-30%</text>
+                <text x="55" y="243" text-anchor="end">-45%</text>
+                <text x="60"  y="258" text-anchor="middle">2007</text>
+                <text x="215" y="258" text-anchor="middle">2008</text>
+                <text x="370" y="258" text-anchor="middle">2009</text>
+                <text x="525" y="258" text-anchor="middle">2010</text>
+                <text x="680" y="258" text-anchor="middle">2011</text>
+              </g>
+              <path d="M60,60 L150,65 L215,90 L280,200 L340,215 L400,160 L500,90 L600,70 L680,62" fill="none" stroke="#b91c1c" stroke-width="2"/>
+              <path d="M60,60 L150,62 L215,75 L280,118 L340,125 L400,95 L500,72 L600,64 L680,60" fill="none" stroke="#1e40af" stroke-width="2"/>
+              <g font-family="Inter, sans-serif" font-size="11" fill="currentColor">
+                <rect x="80"  y="35" width="10" height="2" fill="#1e40af"/>
+                <text x="96"  y="40">Vol-Timed TDF</text>
+                <rect x="220" y="35" width="10" height="2" fill="#b91c1c"/>
+                <text x="236" y="40">S&amp;P 500</text>
+              </g>
+            </svg>
+          </div>
+        </section>
+
+        <section>
+          <h2>Recognition</h2>
+          <p>Second place at the Cornell Investment Practitioners Case Competition, 2025. Judges flagged the cap-and-floor structure as the differentiator; most submissions ran unconstrained vol-targeting and surrendered too much upside to be deployable in a fiduciary product.</p>
+        </section>
+
+        <section>
+          <h2>What I Learned</h2>
+          <p>Drawdown matters more than mean return when the investor cannot time their exit. A retiree near the target date does not get a second crisis to recover from. Constraining the strategy to remain recognizable as a TDF, rather than maximizing the in-sample Sharpe, was the choice that held up under scrutiny.</p>
+        </section>
+
+      </div>
+
+      <aside class="project-sidebar">
+        <section>
+          <h3>Specifications</h3>
+          <ul class="spec-list">
+            <li><span class="key">Status</span><span class="val">Completed</span></li>
+            <li><span class="key">Role</span><span class="val">Quant Lead</span></li>
+            <li><span class="key">Window</span><span class="val">1976&ndash;2024</span></li>
+            <li><span class="key">Result</span><span class="val">2nd Place</span></li>
+          </ul>
+        </section>
+        <section>
+          <h3>Stack</h3>
+          <ul class="tag-list">
+            <li>Python</li>
+            <li>NumPy</li>
+            <li>pandas</li>
+            <li>Backtesting</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Methods</h3>
+          <ul class="tag-list">
+            <li>Volatility Scaling</li>
+            <li>Risk Parity</li>
+            <li>Glide Path Modeling</li>
+          </ul>
+        </section>
+      </aside>
+
+    </div>
+
+    <nav class="project-nav" aria-label="Project navigation">
+      <a class="prev" href="bayesian-portfolio.html">
+        <span class="direction">&larr; Previous</span>
+        <span class="title">Bayesian Portfolio Construction</span>
+      </a>
+      <a class="next" href="revenue-forecasting.html">
+        <span class="direction">Next &rarr;</span>
+        <span class="title">Revenue Forecasting</span>
+      </a>
+    </nav>
+
+  </article>
+</main>
+
+<script>
+  const progressBar = document.getElementById('scroll-progress');
+  function updateProgress() {
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0;
+    progressBar.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
+</script>
+
+</body>
+</html>
